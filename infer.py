@@ -42,7 +42,7 @@ def predict(model: smp.UnetPlusPlus, img_path: str, device = torch.device('cuda'
     mask_rgb = mask_to_rgb(mask)
     mask_rgb = cv2.cvtColor(mask_rgb, cv2.COLOR_RGB2BGR)
 
-    cv2.imwrite(f"{img_path}_result.jpeg", mask_rgb)
+    cv2.imwrite(f"{os.path.splitext(img_path)[0]}_result.jpeg", mask_rgb)
 
 def main():
     if not os.path.exists("checkpoints/model.pth"):
